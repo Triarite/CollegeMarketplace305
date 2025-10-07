@@ -46,6 +46,7 @@ Each member must upload a handwritten signature image to their Google Drive and 
 ![Joshua Benros](https://drive.google.com/uc?export=view&id=1oAQYzOZcaHEYUJPgJue1iZUCY8xDp7rS)
 ![Angel Ibanez](<img width="3023" height="1100" alt="image" src="https://github.com/user-attachments/assets/167847ac-1b60-4302-92e5-e64b4ba93a04" />
 )
+![Aushia Johnson](https://drive.google.com/file/d/1pAiu6Pms5Gv-ROVEAnE8Fu41q0BJN_bc/view?usp=sharing)
 ![Cadije Louis](https://drive.google.com/file/d/1_9Uj3DK1GYOG0kCmZxR_KYt2pI7Q2Hdt/view?usp=sharing)
 
 Each member must make their own commit with their signature addition.
