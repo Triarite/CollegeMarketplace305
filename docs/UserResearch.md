@@ -39,13 +39,14 @@ Improve user trust and convenience by adding features like quick guest browsing,
 **Team Member:** Aushia  
 
 **Observation Statement:**  
-(Example: “Most users access similar apps via mobile, not desktop.”)
+Respondents identified in-app messaging as one of the most important functions in the app.
 
 **Supporting Data:**  
-(e.g., “85% of responses indicated ‘smartphone’ as primary device.”)
+- 84.2% of respondents surveyed that in-app messaging between buyers and sellers is a useful feature.
+- 12/38 people surveyed that it would make them prefer a college marketplace app over a standard marketplace app
 
 **Team Action (if any):**  
-(e.g., “Design mobile-first interface and test responsiveness early.”)
+Integrate secure messaging into our app between buyer and seller
 
 ---
 
