@@ -48,5 +48,6 @@ Each member must upload a handwritten signature image to their Google Drive and 
 )
 ![Aushia Johnson](https://drive.google.com/file/d/1pAiu6Pms5Gv-ROVEAnE8Fu41q0BJN_bc/view?usp=sharing)
 ![Cadije Louis](https://drive.google.com/file/d/1_9Uj3DK1GYOG0kCmZxR_KYt2pI7Q2Hdt/view?usp=sharing)
+![Paolo Montelbano](https://drive.google.com/file/d/1EnzwxPpX2tu7q2BxQWVdpkTQKHhdfFfW/view?usp=sharing)
 
 Each member must make their own commit with their signature addition.
