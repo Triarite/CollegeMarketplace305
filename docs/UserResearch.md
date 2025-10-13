@@ -51,13 +51,14 @@ Each team member contributed one observation with supporting data and an actiona
 **Team Member:** Cadije  
 
 **Observation Statement:**  
-(Example: “Respondents emphasized data privacy as critical.”)
+Students highlighted the potential of the app to sell textbooks, course, and school supplies
 
 **Supporting Data:**  
-(e.g., “6 respondents wrote concerns about personal data or permissions.”)
+73.6% of respondants typically have textbooks and course materials left over after the semester
+57.9% of respondants typically have school supplies left over after the semester
 
 **Team Action (if any):**  
-(e.g., “Highlight privacy compliance in marketing copy and add onboarding privacy notice.”)
+focus on marketing potential to sell used books
 
 ---
 
