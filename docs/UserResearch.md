@@ -65,10 +65,12 @@ Each team member contributed one observation with supporting data and an actiona
 **Team Member:** Josh 
 
 **Observation Statement:**  
-(Example: “Users want optional dark mode feature.”)
+Students prefer secure, campus-specific features such as verified accounts, secure payments, and safety tools that build trust and convenience compared to Facebook Marketplace or OfferUp.
 
 **Supporting Data:**  
-(e.g., “3 comments specifically requested a dark theme option.”)
+- 86.8% of respondents selected secure payment processing as one of the most useful features.
+- 71.1% selected safety tools like reporting and scam prevention.
+- 65.8% valued verified student profiles using school email authentication.
 
 **Team Action (if any):**  
-(e.g., “Add dark mode toggle to the design backlog for iteration testing.”)
+- Focus design efforts on secure payments, verification, and safety features as the top priorities.
