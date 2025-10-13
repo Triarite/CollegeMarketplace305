@@ -9,13 +9,15 @@ Each team member contributed one observation with supporting data and an actiona
 **Team Member:** Paolo  
 
 **Observation Statement:**  
-(Briefly summarize a key finding from survey responses — e.g., “Most users prefer signing in with Google over email/password.”)
+A significant portion of students reported using marketplace apps only occasionally, suggesting that convenience and trust are barriers to consistent engagement.
 
 **Supporting Data:**  
-(Cite specific survey results, e.g., “72% of respondents selected Google sign-in as their preferred authentication method.”)
+- 68% of respondents indicated they use marketplace apps “sometimes” or “rarely.”
+- Only 14% reported using them “very often” or “often.”
+- Given reasons in open responses included uncertainty about safety and hesitation to enter payment details in unfamiliar apps.
 
 **Team Action (if any):**  
-(Describe how the team will respond — e.g., “Prioritize Google OAuth integration in Sprint 2.”)
+Improve user trust and convenience by adding features like quick guest browsing, using trusted third-party payment systems, visible transaction safety indicators, and  pop-ups about secure payments.
 
 ---
 
