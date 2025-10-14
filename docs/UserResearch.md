@@ -59,8 +59,8 @@ Integrate secure messaging into our app between buyer and seller
 Students highlighted the potential of the app to sell textbooks, course, and school supplies
 
 **Supporting Data:**  
-73.6% of respondants typically have textbooks and course materials left over after the semester
-57.9% of respondants typically have school supplies left over after the semester
+80% of respondants typically have textbooks and course materials left over after the semester
+60% of respondants typically have school supplies left over after the semester
 
 **Team Action (if any):**  
 focus on marketing potential to sell used books
