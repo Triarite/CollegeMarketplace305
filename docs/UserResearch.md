@@ -74,9 +74,9 @@ focus on marketing potential to sell used books
 Students prefer secure, campus-specific features such as verified accounts, secure payments, and safety tools that build trust and convenience compared to Facebook Marketplace or OfferUp.
 
 **Supporting Data:**  
-- 86.8% of respondents selected secure payment processing as one of the most useful features.
-- 71.1% selected safety tools like reporting and scam prevention.
-- 65.8% valued verified student profiles using school email authentication.
+- 89.4% of respondents selected secure payment processing as one of the most useful features.
+- 66% selected safety tools like reporting and scam prevention.
+- 66% valued verified student profiles using school email authentication.
 
 **Team Action (if any):**  
 - Focus design efforts on secure payments, verification, and safety features as the top priorities.
