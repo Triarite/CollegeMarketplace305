@@ -44,8 +44,8 @@ add a feature when the student can scan the book and it can instantly set up the
 Respondents identified in-app messaging as one of the most important functions in the app.
 
 **Supporting Data:**  
-- 84.2% of respondents surveyed that in-app messaging between buyers and sellers is a useful feature.
-- 12/38 people surveyed that it would make them prefer a college marketplace app over a standard marketplace app
+- 82.2% of respondents surveyed that in-app messaging between buyers and sellers is a useful feature.
+- 14/38 people surveyed that it would make them prefer a college marketplace app over a standard marketplace app
 
 **Team Action (if any):**  
 Integrate secure messaging into our app between buyer and seller
