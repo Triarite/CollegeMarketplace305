@@ -25,13 +25,14 @@ Improve user trust and convenience by adding features like quick guest browsing,
 **Team Member:** Angel  
 
 **Observation Statement:**  
-(Example: “Users expressed confusion about pricing tiers.”)
+A lot of student have leftover textbooks and school supplies, so we can focus on a page just for those items
 
 **Supporting Data:**  
-(e.g., “4 out of 10 open-ended responses mentioned unclear pricing or subscription wording.”)
+75% of student have leftover textbooks and school supplies at the end of a semester
 
 **Team Action (if any):**  
-(e.g., “Add clearer pricing comparison chart on landing page prototype.”)
+add a textbook and school supplies section a subpage for student only looking for that type of stuff
+add a feature when the student can scan the book and it can instantly set up the selling process for it
 
 ---
 
