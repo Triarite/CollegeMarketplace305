@@ -32,6 +32,7 @@ A lot of student have leftover textbooks and school supplies, so we can focus on
 
 **Team Action (if any):**  
 add a textbook and school supplies section a subpage for student only looking for that type of stuff
+
 add a feature when the student can scan the book and it can instantly set up the selling process for it
 
 ---
