@@ -25,10 +25,10 @@ Improve user trust and convenience by adding features like quick guest browsing,
 **Team Member:** Angel  
 
 **Observation Statement:**  
-A lot of student have leftover textbooks and school supplies, so we can focus on a page just for those items
+A lot of student have leftover textbooks and course materials, so we can focus on a page just for those items
 
 **Supporting Data:**  
-75% of student have leftover textbooks and school supplies at the end of a semester
+79% of student have leftover textbooks and course materials at the end of a semester
 
 **Team Action (if any):**  
 add a textbook and school supplies section a subpage for student only looking for that type of stuff
