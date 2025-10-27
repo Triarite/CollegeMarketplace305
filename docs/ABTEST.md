@@ -17,17 +17,25 @@
 ```
 
 ## Paolo
-**A/B Test Name:**
+**A/B Test Name:** Item Listing Price Location - On-Top of Image vs Adjacent to Image
 
-**User Story Number:**
+**User Story Number:** US4 - Golden Path
 
 **Metrics:**
+- Engagement: Time until user makes purchase decision or exits item listing
+- Happiness: User rates intuitiveness of determining price
 
 **Hypothesis:**
+- Users are more likely to quickly make a purchase decision if the price is adjacent to the image instead of on top of the image.
 
 **Experiment:**
+- Platform: Survey sent to user and saved to firebase
+- Audience: All users
+- Metric Collection Parameter: After certain # of purchases, user is presented survey asking about intuitiveness, time spent on determing purchase decision.
 
 **Variations:**
+Variant A: Price is on top-right corner of image
+Variant B: Price is immediately below image next to item name
 
 ---
 
