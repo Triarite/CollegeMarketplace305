@@ -32,18 +32,54 @@
 ---
 
 ## Josh
-**A/B Test Name:**
+**A/B Test Name:** Signup/Sign-in: One Screen vs Two Screens
 
-**User Story Number:**
+**User Story Number:** US1 - Account Creation 
 
 **Metrics:**
+- Adoption (Primary): Percentage of users who successfully create or log into an account
+
+- Engagement: Time it takes to complete the login/signup process
+
+- Happiness: User satisfaction based on quick survey or feedback prompt
 
 **Hypothesis:**
+Users are more likely to complete the signup or login process if both options are available on the same screen, since it removes confusion and extra navigation steps.
+We believe that combining them will increase completion rate and reduce time-to-authentication compared to having two separate screens.
 
 **Experiment:**
+- Platform: Firebase A/B Testing using Remote Config
+
+- Parameter: auth_screen_variant = "combined" or "separate"
+
+- Audience: 50/50 split of new users who are not signed in
+
+Tracking:
+
+- auth_view – when the page loads
+
+- auth_submit – when the button is tapped
+
+- auth_success – when authentication completes
+
+- auth_error – if login/signup fails
+
+- Duration: 7 days or until 1,000 sessions per variant
 
 **Variations:**
+Variant A (Combined):
 
+- One screen with a toggle between “Login” and “Sign Up”
+
+- Shared email/password fields
+
+- One main button that changes label based on toggle
+
+Variant B (Separate):
+
+- Two distinct pages: one for “Login,” one for “Sign Up”
+
+- Users must navigate between screens
 ---
 
 ## Aushia
