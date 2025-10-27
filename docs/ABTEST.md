@@ -139,8 +139,9 @@ Tracking:
 
 **Variations:**
 
-Recommnded_Page(Enabled) - these users will have access to a functioning recommended page
-Recommended_Page(Disabled) - these users will not havea recommended page
+Recommended_Tab(Disabled) - these users will not have access to a recommended page
+Recommended_Tab(Enabled) - these users will have access to a functioning recommended tab
+
 ---
 
 ## Angel
