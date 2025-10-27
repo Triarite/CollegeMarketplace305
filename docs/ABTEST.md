@@ -34,8 +34,8 @@
 - Metric Collection Parameter: After certain # of purchases, user is presented survey asking about intuitiveness, time spent on determing purchase decision.
 
 **Variations:**
-Variant A: Price is on top-right corner of image
-Variant B: Price is immediately below image next to item name
+- Variant A: Price is on top-right corner of image
+- Variant B: Price is immediately below image next to item name
 
 ---
 
