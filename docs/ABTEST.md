@@ -91,17 +91,25 @@ Variant B (Separate):
 ---
 
 ## Aushia
-**A/B Test Name:**
+**A/B Test Name:** Logo Preference Test – Version A vs B
 
-**User Story Number:**
+**User Story Number:** Sprint 2; CM_01: Create a Logo
 
 **Metrics:**
-
+- Click-through rate (CTR) on the login or sign-up page
+- Retention: Time spent on the page
+- Happiness: Bounce rate
+- Engagement: Brand recall using a survey
+  
 **Hypothesis:**
+Changing subtle elements of the logo, such as font or icons used and placed, will influence user engagement. Logo A will result in higher CTR and better brand recall due to its unique icon usage.
 
 **Experiment:**
+Display Logo A and Logo B to randomly split user groups visiting the homepage or landing page. Ensure all other page elements remain identical. Track user behavior and engagement metrics over a 7-day period.
 
 **Variations:**
+Logo A: Original logo with current font and icon alignment
+Logo B: Slightly modified logo with a business font and no icons
 
 ---
 
