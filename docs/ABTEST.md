@@ -128,12 +128,13 @@ Tracking:
 
 - recommended_tap – whether the user interacts with the recommended tab
   
-- recommended_view– how long the user views the overall recommded tab
+- recommended_view– how long the user views the overall recommended tab
 
 - recommended_item_view – how long a user views a recommnded item
 
 - recommended_buy – whether a user buys a recommended item
-- experiment_buy – how msny products a user with a recommended tab purchases during the experiment
+- 
+- experiment_buy – how many products a user with a recommended tab purchases during the experiment
   
 - Duration: 30 days
 
