@@ -106,18 +106,41 @@ Variant B (Separate):
 ---
 
 ## Cadije
-**A/B Test Name:**
+**A/B Test Name:** Product Recommendation Section
 
-**User Story Number:**
+**User Story Number:** US-04 Golden Path
 
-**Metrics:**
+**Metrics:** 
+- Engagement = Encourage students to browse listings, chat, and make purchases regularly.
+- Retention = Encourage repeated buying behavior.
 
 **Hypothesis:**
+Users will be more likely to repeatedly make purchases and/or if they are presented with recommended products based on their past needs and purchases. Presenting items based on user habits eliminates the task of searching for products leaving the user with more motivation to buy.
 
 **Experiment:**
+ Platform: Firebase A/B Testing using Remote Config
+
+- Parameter: Recommended_Tab = "enabled" or "disabled"
+
+- Audience: 50/50 split of users who have made at least 3 purchases
+
+Tracking:
+
+- recommended_tap – whether the user interacts with the recommended tab
+  
+- recommended_view– how long the user views the overall recommded tab
+
+- recommended_item_view – how long a user views a recommnded item
+
+- recommended_buy – whether a user buys a recommended item
+- experiment_buy – how msny products a user with a recommended tab purchases during the experiment
+  
+- Duration: 30 days
 
 **Variations:**
 
+Recommnded_Page(Enabled) - these users will have access to a functioning recommended page
+Recommended_Page(Disabled) - these users will not havea recommended page
 ---
 
 ## Angel
