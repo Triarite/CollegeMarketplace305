@@ -154,15 +154,37 @@ Recommended_Tab(Enabled) - these users will have access to a functioning recomme
 ---
 
 ## Angel
-**A/B Test Name:**
+**A/B Test Name:** Avatar Upload Prominence
 
-**User Story Number:**
+**User Story Number:** 3-Profile creation
 
-**Metrics:**
+**Metrics:**  
+
+Engagement: Profile completion rate (% of users who fill all optional fields)
+
+Adoption: Profile creation completion rate (% of users who successfully create a profile after starting)
+
+Task Success: Time to complete profile creation, error rate during creation
 
 **Hypothesis:**
 
+If we make the profile picture upload more prominent with contextual messaging, then profile picture upload rates will increase by 15-20% because students will better understand the value of having a profile picture for building trust in marketplace transactions.
+
 **Experiment:**
 
+- Platform: Firebase A/B Testing using Remote Config
+
+- Parameter: profile_avatar_variant = "standard" or "enhanced"
+
+- Audience: 50/50 split of all new users during profile creation flow
+
+- Tracking: Display either standard or enhanced avatar upload UI to randomly split user groups. Track profile picture upload rate, completion rate, and time to complete over a 2-3 week period until statistical significance is reached (minimum 1,000 profiles per variant).
+
+
+
 **Variations:**
+
+Version A: is going to be the original "+" button"
+
+Version B: going to add text on top of Image area, make image bigger, and change "+" button to "add image" button
 
