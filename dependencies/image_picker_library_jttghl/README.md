@@ -1,4 +1,4 @@
-# College Marketplace
+# image-picker-library
 
 A new Flutter project.
 

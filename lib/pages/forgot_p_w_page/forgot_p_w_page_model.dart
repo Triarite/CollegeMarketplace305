@@ -1,0 +1,23 @@
+import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
+import 'forgot_p_w_page_widget.dart' show ForgotPWPageWidget;
+import 'package:flutter/material.dart';
+
+class ForgotPWPageModel extends FlutterFlowModel<ForgotPWPageWidget> {
+  ///  State fields for stateful widgets in this page.
+
+  // State field(s) for enterResetEmail widget.
+  FocusNode? enterResetEmailFocusNode;
+  TextEditingController? enterResetEmailTextController;
+  String? Function(BuildContext, String?)?
+      enterResetEmailTextControllerValidator;
+
+  @override
+  void initState(BuildContext context) {}
+
+  @override
+  void dispose() {
+    enterResetEmailFocusNode?.dispose();
+    enterResetEmailTextController?.dispose();
+  }
+}
