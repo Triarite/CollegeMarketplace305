@@ -1,7 +1,9 @@
 import '/backend/backend.dart';
-import '/components/ratings_widget.dart';
+import '/components/seller_info_widget.dart';
+import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -101,6 +103,7 @@ class _ItemListingWidgetState extends State<ItemListingWidget> {
             padding: EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 0.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Align(
                   alignment: AlignmentDirectional(0.0, 0.0),
@@ -115,13 +118,59 @@ class _ItemListingWidgetState extends State<ItemListingWidget> {
                             width: 2.0,
                           ),
                         ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(15.0),
-                          child: Image.network(
-                            'https://picsum.photos/seed/57/600',
-                            width: double.infinity,
-                            height: 220.0,
-                            fit: BoxFit.cover,
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            logFirebaseEvent(
+                                'ITEM_LISTING_PAGE_Image_gchucfuh_ON_TAP');
+                            logFirebaseEvent('Image_expand_image');
+                            await Navigator.push(
+                              context,
+                              PageTransition(
+                                type: PageTransitionType.fade,
+                                child: FlutterFlowExpandedImageView(
+                                  image: Image.network(
+                                    functions.convertStringToImagePath(
+                                        valueOrDefault<String>(
+                                      widget.productsDocument?.image,
+                                      'https://picsum.photos/seed/57/600',
+                                    ))!,
+                                    fit: BoxFit.contain,
+                                  ),
+                                  allowRotation: false,
+                                  tag: functions.convertStringToImagePath(
+                                      valueOrDefault<String>(
+                                    widget.productsDocument?.image,
+                                    'https://picsum.photos/seed/57/600',
+                                  ))!,
+                                  useHeroAnimation: true,
+                                ),
+                              ),
+                            );
+                          },
+                          child: Hero(
+                            tag: functions.convertStringToImagePath(
+                                valueOrDefault<String>(
+                              widget.productsDocument?.image,
+                              'https://picsum.photos/seed/57/600',
+                            ))!,
+                            transitionOnUserGestures: true,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(15.0),
+                              child: Image.network(
+                                functions.convertStringToImagePath(
+                                    valueOrDefault<String>(
+                                  widget.productsDocument?.image,
+                                  'https://picsum.photos/seed/57/600',
+                                ))!,
+                                width: double.infinity,
+                                height: 220.0,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                           ),
                         ),
                       ),
@@ -156,7 +205,15 @@ class _ItemListingWidgetState extends State<ItemListingWidget> {
                           child: Align(
                             alignment: AlignmentDirectional(0.0, 0.0),
                             child: Text(
-                              '\$${widget.productsDocument?.price.toString()}',
+                              valueOrDefault<String>(
+                                formatNumber(
+                                  widget.productsDocument?.price,
+                                  formatType: FormatType.decimal,
+                                  decimalType: DecimalType.periodDecimal,
+                                  currency: '\$',
+                                ),
+                                '\$0',
+                              ),
                               textAlign: TextAlign.center,
                               style: FlutterFlowTheme.of(context)
                                   .headlineMedium
@@ -220,7 +277,7 @@ class _ItemListingWidgetState extends State<ItemListingWidget> {
                       Align(
                         alignment: AlignmentDirectional(-1.0, 0.0),
                         child: Text(
-                          'Listed (time) ago - On Campus',
+                          'Listed ${dateTimeFormat("relative", widget.productsDocument?.createdAt)} - On Campus',
                           style: FlutterFlowTheme.of(context)
                               .titleLarge
                               .override(
@@ -247,63 +304,77 @@ class _ItemListingWidgetState extends State<ItemListingWidget> {
                   thickness: 1.0,
                   color: FlutterFlowTheme.of(context).primaryText,
                 ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 14.0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Align(
-                        alignment: AlignmentDirectional(-1.0, 0.0),
-                        child: Text(
-                          'Item Description',
-                          style: FlutterFlowTheme.of(context)
-                              .titleLarge
-                              .override(
-                                font: GoogleFonts.interTight(
+                Flexible(
+                  child: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 14.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Align(
+                          alignment: AlignmentDirectional(-1.0, 0.0),
+                          child: Text(
+                            'Item Description',
+                            style: FlutterFlowTheme.of(context)
+                                .titleLarge
+                                .override(
+                                  font: GoogleFonts.interTight(
+                                    fontWeight: FontWeight.w500,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleLarge
+                                        .fontStyle,
+                                  ),
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                  letterSpacing: 0.0,
                                   fontWeight: FontWeight.w500,
                                   fontStyle: FlutterFlowTheme.of(context)
                                       .titleLarge
                                       .fontStyle,
                                 ),
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                letterSpacing: 0.0,
-                                fontWeight: FontWeight.w500,
-                                fontStyle: FlutterFlowTheme.of(context)
-                                    .titleLarge
-                                    .fontStyle,
-                              ),
+                          ),
                         ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(-1.0, 0.0),
-                        child: InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            logFirebaseEvent(
-                                'ITEM_LISTING_PAGE_Description_ON_TAP');
-                            logFirebaseEvent('Description_update_page_state');
-                            _model.isDescriptionExpanded =
-                                !_model.isDescriptionExpanded;
-                            safeSetState(() {});
-                          },
-                          child: Text(
-                            valueOrDefault<String>(
-                              widget.productsDocument?.description,
-                              'Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.  Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.  Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.  Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.  Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.',
-                            ).maybeHandleOverflow(
-                              maxChars: valueOrDefault<int>(
-                                _model.isDescriptionExpanded ? 2500 : 250,
-                                250,
-                              ),
-                              replacement: '…',
-                            ),
-                            style:
-                                FlutterFlowTheme.of(context).bodyLarge.override(
-                                      font: GoogleFonts.inter(
+                        Flexible(
+                          child: ListView(
+                            padding: EdgeInsets.zero,
+                            shrinkWrap: true,
+                            scrollDirection: Axis.vertical,
+                            children: [
+                              InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  logFirebaseEvent(
+                                      'ITEM_LISTING_PAGE_Text_96babbz2_ON_TAP');
+                                  logFirebaseEvent('Text_update_page_state');
+                                  _model.isDescriptionExpanded =
+                                      !_model.isDescriptionExpanded;
+                                  safeSetState(() {});
+                                },
+                                child: Text(
+                                  valueOrDefault<String>(
+                                    widget.productsDocument?.description,
+                                    'Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.  Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.  Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.  Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.  Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.',
+                                  ),
+                                  maxLines:
+                                      _model.isDescriptionExpanded ? 1000 : 3,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyLarge
+                                      .override(
+                                        font: GoogleFonts.inter(
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyLarge
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyLarge
+                                                  .fontStyle,
+                                        ),
+                                        fontSize: 20.0,
+                                        letterSpacing: 0.0,
                                         fontWeight: FlutterFlowTheme.of(context)
                                             .bodyLarge
                                             .fontWeight,
@@ -311,181 +382,31 @@ class _ItemListingWidgetState extends State<ItemListingWidget> {
                                             .bodyLarge
                                             .fontStyle,
                                       ),
-                                      fontSize: 20.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .bodyLarge
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyLarge
-                                          .fontStyle,
-                                    ),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
                 Divider(
                   thickness: 1.0,
                   color: FlutterFlowTheme.of(context).primaryText,
                 ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
-                          logFirebaseEvent(
-                              'ITEM_LISTING_PAGE_SellerPhoto_ON_TAP');
-                          logFirebaseEvent('SellerPhoto_action_block');
-                          await _model.testAlert(
-                            context,
-                            toDo: 'Go to seller profile',
-                          );
-                        },
-                        child: Container(
-                          width: 48.0,
-                          height: 48.0,
-                          clipBehavior: Clip.antiAlias,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                          ),
-                          child: Image.network(
-                            'https://picsum.photos/seed/70/600',
-                            fit: BoxFit.cover,
-                          ),
-                        ),
+                Flexible(
+                  child: Align(
+                    alignment: AlignmentDirectional(-1.0, -1.0),
+                    child: wrapWithModel(
+                      model: _model.sellerInfoModel,
+                      updateCallback: () => safeSetState(() {}),
+                      child: SellerInfoWidget(
+                        sellerDocumentReference:
+                            widget.productsDocument!.ownerRef!,
                       ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
-                        child: InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            logFirebaseEvent(
-                                'ITEM_LISTING_PAGE_Column_sm165qow_ON_TAP');
-                            logFirebaseEvent('Column_action_block');
-                            await _model.testAlert(
-                              context,
-                              toDo: 'Go to seller profile',
-                            );
-                          },
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Seller: (name here)',
-                                style: FlutterFlowTheme.of(context)
-                                    .titleLarge
-                                    .override(
-                                      font: GoogleFonts.interTight(
-                                        fontWeight: FontWeight.w600,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .titleLarge
-                                            .fontStyle,
-                                      ),
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.w600,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .titleLarge
-                                          .fontStyle,
-                                    ),
-                              ),
-                              Container(
-                                width: 300.0,
-                                decoration: BoxDecoration(),
-                                child: wrapWithModel(
-                                  model: _model.ratingsModel,
-                                  updateCallback: () => safeSetState(() {}),
-                                  child: RatingsWidget(
-                                    numRatings: 7,
-                                    averageRating: 2.7,
-                                  ),
-                                ),
-                              ),
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.star,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    size: 24.0,
-                                  ),
-                                  Icon(
-                                    Icons.star,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    size: 24.0,
-                                  ),
-                                  Icon(
-                                    Icons.star,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    size: 24.0,
-                                  ),
-                                  Icon(
-                                    Icons.star,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    size: 24.0,
-                                  ),
-                                  Icon(
-                                    Icons.star,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    size: 24.0,
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 3.0, 0.0, 0.0),
-                                    child: Text(
-                                      '(12)',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            font: GoogleFonts.inter(
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontStyle,
-                                            ),
-                                            fontSize: 14.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontStyle,
-                                          ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               ],

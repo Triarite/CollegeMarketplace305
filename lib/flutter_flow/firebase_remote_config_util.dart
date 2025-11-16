@@ -8,6 +8,7 @@ Future initializeFirebaseRemoteConfig() async {
     ));
     await FirebaseRemoteConfig.instance.setDefaults(const {
       'PC_Text': false,
+      'topText': '',
     });
     await FirebaseRemoteConfig.instance.fetchAndActivate();
   } catch (error) {

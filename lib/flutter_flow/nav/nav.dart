@@ -94,14 +94,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) {
             appStateNotifier.loggedIn ? BrowsePageWidget() : LoginPageWidget(),
       ),
       FFRoute(
+        name: ForgotPWPageWidget.routeName,
+        path: ForgotPWPageWidget.routePath,
+        builder: (context, params) => ForgotPWPageWidget(),
+      ),
+      FFRoute(
         name: AccountCreationWidget.routeName,
         path: AccountCreationWidget.routePath,
         builder: (context, params) => AccountCreationWidget(),
-      ),
-      FFRoute(
-        name: TempLoggoutWidget.routeName,
-        path: TempLoggoutWidget.routePath,
-        builder: (context, params) => TempLoggoutWidget(),
       ),
       FFRoute(
         name: ProfileCreationWidget.routeName,
@@ -109,9 +109,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) {
         builder: (context, params) => ProfileCreationWidget(),
       ),
       FFRoute(
-        name: ForgotPWPageWidget.routeName,
-        path: ForgotPWPageWidget.routePath,
-        builder: (context, params) => ForgotPWPageWidget(),
+        name: SellPageWidget.routeName,
+        path: SellPageWidget.routePath,
+        builder: (context, params) => SellPageWidget(),
+      ),
+      FFRoute(
+        name: BrowsePageWidget.routeName,
+        path: BrowsePageWidget.routePath,
+        builder: (context, params) => BrowsePageWidget(),
+      ),
+      FFRoute(
+        name: TempLoggoutWidget.routeName,
+        path: TempLoggoutWidget.routePath,
+        builder: (context, params) => TempLoggoutWidget(),
       ),
       FFRoute(
         name: ItemListingWidget.routeName,
@@ -127,19 +137,21 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) {
         ),
       ),
       FFRoute(
-        name: SellPageWidget.routeName,
-        path: SellPageWidget.routePath,
-        builder: (context, params) => SellPageWidget(),
-      ),
-      FFRoute(
-        name: BrowsePageWidget.routeName,
-        path: BrowsePageWidget.routePath,
-        builder: (context, params) => BrowsePageWidget(),
-      ),
-      FFRoute(
         name: LoginPageWidget.routeName,
         path: LoginPageWidget.routePath,
         builder: (context, params) => LoginPageWidget(),
+      ),
+      FFRoute(
+        name: ProfileViewerWidget.routeName,
+        path: ProfileViewerWidget.routePath,
+        builder: (context, params) => ProfileViewerWidget(
+          userDocumentReference: params.getParam(
+            'userDocumentReference',
+            ParamType.DocumentReference,
+            isList: false,
+            collectionNamePath: ['users'],
+          ),
+        ),
       ),
       FFRoute(
         name: $image_picker_library_jttghl.HomePageWidget.routeName,

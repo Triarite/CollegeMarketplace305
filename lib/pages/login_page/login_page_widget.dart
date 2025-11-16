@@ -3,7 +3,9 @@ import '/backend/backend.dart';
 import '/components/nps_popup_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
+import 'package:collection/collection.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
@@ -401,8 +403,34 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                           },
                         );
                       }
+                      logFirebaseEvent('loginButton_firestore_query');
+                      _model.retentionDoc =
+                          await queryRetentionMetricsRecordOnce(
+                        queryBuilder: (retentionMetricsRecord) =>
+                            retentionMetricsRecord.where(
+                          'userEmail',
+                          isNotEqualTo: currentUserEmail,
+                        ),
+                        singleRecord: true,
+                      ).then((s) => s.firstOrNull);
+                      if (_model.retentionDoc?.firstLogin == null) {
+                        logFirebaseEvent('loginButton_backend_call');
+
+                        await RetentionMetricsRecord.collection.doc().set({
+                          ...mapToFirestore(
+                            {
+                              'firstLogin': FieldValue.serverTimestamp(),
+                              'lastLogin': FieldValue.serverTimestamp(),
+                            },
+                          ),
+                        });
+                      }
+                      logFirebaseEvent('loginButton_custom_action');
+                      await actions.updateRetention();
 
                       _navigate();
+
+                      safeSetState(() {});
                     },
                     text: 'Login',
                     options: FFButtonOptions(

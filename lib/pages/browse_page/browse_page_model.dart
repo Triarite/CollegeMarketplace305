@@ -11,10 +11,10 @@ class BrowsePageModel extends FlutterFlowModel<BrowsePageWidget> {
 
   ///  State fields for stateful widgets in this page.
 
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode;
-  TextEditingController? textController;
-  String? Function(BuildContext, String?)? textControllerValidator;
+  // State field(s) for SearchItem widget.
+  FocusNode? searchItemFocusNode;
+  TextEditingController? searchItemTextController;
+  String? Function(BuildContext, String?)? searchItemTextControllerValidator;
   // State field(s) for ChoiceChips widget.
   FormFieldController<List<String>>? choiceChipsValueController;
   String? get choiceChipsValue =>
@@ -27,7 +27,7 @@ class BrowsePageModel extends FlutterFlowModel<BrowsePageWidget> {
 
   @override
   void dispose() {
-    textFieldFocusNode?.dispose();
-    textController?.dispose();
+    searchItemFocusNode?.dispose();
+    searchItemTextController?.dispose();
   }
 }

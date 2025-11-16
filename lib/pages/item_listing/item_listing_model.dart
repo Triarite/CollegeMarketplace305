@@ -1,4 +1,4 @@
-import '/components/ratings_widget.dart';
+import '/components/seller_info_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'item_listing_widget.dart' show ItemListingWidget;
 import 'package:flutter/material.dart';
@@ -10,17 +10,17 @@ class ItemListingModel extends FlutterFlowModel<ItemListingWidget> {
 
   ///  State fields for stateful widgets in this page.
 
-  // Model for Ratings component.
-  late RatingsModel ratingsModel;
+  // Model for SellerInfo component.
+  late SellerInfoModel sellerInfoModel;
 
   @override
   void initState(BuildContext context) {
-    ratingsModel = createModel(context, () => RatingsModel());
+    sellerInfoModel = createModel(context, () => SellerInfoModel());
   }
 
   @override
   void dispose() {
-    ratingsModel.dispose();
+    sellerInfoModel.dispose();
   }
 
   /// Action blocks.

@@ -1,7 +1,9 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -31,8 +33,8 @@ class _NpsPopupWidgetState extends State<NpsPopupWidget> {
     super.initState();
     _model = createModel(context, () => NpsPopupModel());
 
-    _model.question2TextController ??= TextEditingController();
-    _model.question2FocusNode ??= FocusNode();
+    _model.feedbackTextController ??= TextEditingController();
+    _model.feedbackFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -79,7 +81,7 @@ class _NpsPopupWidgetState extends State<NpsPopupWidget> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      'How likley are you to reccomend our app?',
+                      'How likely are you to reccomend our app?',
                       textAlign: TextAlign.center,
                       style:
                           FlutterFlowTheme.of(context).headlineSmall.override(
@@ -175,8 +177,8 @@ class _NpsPopupWidgetState extends State<NpsPopupWidget> {
                     Container(
                       width: 450.0,
                       child: TextFormField(
-                        controller: _model.question2TextController,
-                        focusNode: _model.question2FocusNode,
+                        controller: _model.feedbackTextController,
+                        focusNode: _model.feedbackFocusNode,
                         autofocus: false,
                         enabled: true,
                         obscureText: false,
@@ -272,7 +274,7 @@ class _NpsPopupWidgetState extends State<NpsPopupWidget> {
                         maxLines: 3,
                         cursorColor: FlutterFlowTheme.of(context).primaryText,
                         enableInteractiveSelection: true,
-                        validator: _model.question2TextControllerValidator
+                        validator: _model.feedbackTextControllerValidator
                             .asValidator(context),
                       ),
                     ),
@@ -332,8 +334,8 @@ class _NpsPopupWidgetState extends State<NpsPopupWidget> {
                         await NpsResponsesRecord.collection.doc().set({
                           ...createNpsResponsesRecordData(
                             score: _model.ratingBarValue?.round(),
-                            question2: _model.question2TextController.text,
                             userEmail: currentUserEmail,
+                            question2: _model.feedbackTextController.text,
                           ),
                           ...mapToFirestore(
                             {
@@ -343,6 +345,24 @@ class _NpsPopupWidgetState extends State<NpsPopupWidget> {
                         });
                         logFirebaseEvent('Button_close_dialog_drawer_etc');
                         Navigator.pop(context);
+                        logFirebaseEvent('Button_cloud_function');
+                        try {
+                          final result = await FirebaseFunctions.instance
+                              .httpsCallable('getNPS')
+                              .call({});
+                          _model.cloudFunction0fp =
+                              GetNPSCloudFunctionCallResponse(
+                            succeeded: true,
+                          );
+                        } on FirebaseFunctionsException catch (error) {
+                          _model.cloudFunction0fp =
+                              GetNPSCloudFunctionCallResponse(
+                            errorCode: error.code,
+                            succeeded: false,
+                          );
+                        }
+
+                        safeSetState(() {});
                       },
                       text: 'Submit',
                       options: FFButtonOptions(

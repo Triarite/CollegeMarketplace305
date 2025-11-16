@@ -18,3 +18,17 @@ String? convertStringToImagePath(String? imageUrl) {
   }
   return imageUrl; // Return the image URL as the Image Path type
 }
+
+double? getAverageFromIntList(List<int>? listOfRatings) {
+  // Take a list of integers and return a double of the average of those integers
+  if (listOfRatings == null || listOfRatings.isEmpty) {
+    return 0; // Return 0 if the list is empty or null
+  }
+
+  double sum = 0;
+  for (int rating in listOfRatings) {
+    sum += rating; // add to sum
+  }
+
+  return sum / listOfRatings.length; // Return the average
+}

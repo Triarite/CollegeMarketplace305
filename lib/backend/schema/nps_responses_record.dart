@@ -35,17 +35,23 @@ class NpsResponsesRecord extends FirestoreRecord {
   String get userEmail => _userEmail ?? '';
   bool hasUserEmail() => _userEmail != null;
 
-  // "nps_bucket" field.
-  String? _npsBucket;
-  String get npsBucket => _npsBucket ?? '';
-  bool hasNpsBucket() => _npsBucket != null;
+  // "npsScore" field.
+  int? _npsScore;
+  int get npsScore => _npsScore ?? 0;
+  bool hasNpsScore() => _npsScore != null;
+
+  // "npsTotal" field.
+  int? _npsTotal;
+  int get npsTotal => _npsTotal ?? 0;
+  bool hasNpsTotal() => _npsTotal != null;
 
   void _initializeFields() {
     _score = castToType<int>(snapshotData['score']);
     _timestamp = snapshotData['timestamp'] as DateTime?;
     _question2 = snapshotData['Question2'] as String?;
     _userEmail = snapshotData['userEmail'] as String?;
-    _npsBucket = snapshotData['nps_bucket'] as String?;
+    _npsScore = castToType<int>(snapshotData['npsScore']);
+    _npsTotal = castToType<int>(snapshotData['npsTotal']);
   }
 
   static CollectionReference get collection =>
@@ -87,7 +93,8 @@ Map<String, dynamic> createNpsResponsesRecordData({
   DateTime? timestamp,
   String? question2,
   String? userEmail,
-  String? npsBucket,
+  int? npsScore,
+  int? npsTotal,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -95,7 +102,8 @@ Map<String, dynamic> createNpsResponsesRecordData({
       'timestamp': timestamp,
       'Question2': question2,
       'userEmail': userEmail,
-      'nps_bucket': npsBucket,
+      'npsScore': npsScore,
+      'npsTotal': npsTotal,
     }.withoutNulls,
   );
 
@@ -112,12 +120,19 @@ class NpsResponsesRecordDocumentEquality
         e1?.timestamp == e2?.timestamp &&
         e1?.question2 == e2?.question2 &&
         e1?.userEmail == e2?.userEmail &&
-        e1?.npsBucket == e2?.npsBucket;
+        e1?.npsScore == e2?.npsScore &&
+        e1?.npsTotal == e2?.npsTotal;
   }
 
   @override
-  int hash(NpsResponsesRecord? e) => const ListEquality()
-      .hash([e?.score, e?.timestamp, e?.question2, e?.userEmail, e?.npsBucket]);
+  int hash(NpsResponsesRecord? e) => const ListEquality().hash([
+        e?.score,
+        e?.timestamp,
+        e?.question2,
+        e?.userEmail,
+        e?.npsScore,
+        e?.npsTotal
+      ]);
 
   @override
   bool isValidKey(Object? o) => o is NpsResponsesRecord;
