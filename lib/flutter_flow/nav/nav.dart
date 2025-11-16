@@ -73,7 +73,7 @@ class AppStateNotifier extends ChangeNotifier {
   }
 }
 
-GoRouter createRouter(AppStateNotifier appStateNotifier) {
+GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) {
   $image_picker_library_jttghl.initializeRoutes(
     homePageWidgetName: 'image_picker_library_jttghl.HomePage',
     homePageWidgetPath: '/homePage',
@@ -84,14 +84,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) {
     debugLogDiagnostics: true,
     refreshListenable: appStateNotifier,
     navigatorKey: appNavigatorKey,
-    errorBuilder: (context, state) =>
-        appStateNotifier.loggedIn ? BrowsePageWidget() : LoginPageWidget(),
+    errorBuilder: (context, state) => appStateNotifier.loggedIn
+        ? entryPage ?? BrowsePageWidget()
+        : LoginPageWidget(),
     routes: [
       FFRoute(
         name: '_initialize',
         path: '/',
-        builder: (context, _) =>
-            appStateNotifier.loggedIn ? BrowsePageWidget() : LoginPageWidget(),
+        builder: (context, _) => appStateNotifier.loggedIn
+            ? entryPage ?? BrowsePageWidget()
+            : LoginPageWidget(),
       ),
       FFRoute(
         name: ForgotPWPageWidget.routeName,

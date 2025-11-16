@@ -104,6 +104,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                 child: Container(
                   width: 350.0,
                   child: TextFormField(
+                    key: ValueKey('loginEnterPW_h1ur'),
                     controller: _model.loginEnterPWTextController,
                     focusNode: _model.loginEnterPWFocusNode,
                     autofocus: false,
@@ -226,6 +227,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                 child: Container(
                   width: 350.0,
                   child: TextFormField(
+                    key: ValueKey('loginEnterEmail_e4lz'),
                     controller: _model.loginEnterEmailTextController,
                     focusNode: _model.loginEnterEmailFocusNode,
                     onChanged: (_) => EasyDebounce.debounce(
@@ -353,6 +355,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                 alignment: AlignmentDirectional(0.0, 0.59),
                 child: Builder(
                   builder: (context) => FFButtonWidget(
+                    key: ValueKey('loginButton_6ich'),
                     onPressed: () async {
                       logFirebaseEvent('LOGIN_PAGE_PAGE_loginButton_ON_TAP');
                       Function() _navigate = () {};

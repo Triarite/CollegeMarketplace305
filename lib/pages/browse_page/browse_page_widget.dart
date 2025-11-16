@@ -247,6 +247,7 @@ class _BrowsePageWidgetState extends State<BrowsePageWidget> {
                       ),
                     ),
                     FlutterFlowChoiceChips(
+                      key: ValueKey('ChoiceChips_4dgn'),
                       options: [
                         ChipData('Textbooks'),
                         ChipData('Kitchen'),
