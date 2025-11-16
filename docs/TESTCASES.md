@@ -1,6 +1,6 @@
 [US1: User Account Creation](link here)
 
-[US2: User Log In](link here)
+[US2: User Log In](https://docs.google.com/presentation/d/1Xhd-bPh0x5KSZWaIrGkUJNX7RR2g2u3AKoEHBS5A8HQ/edit?slide=id.g3a2f7671fab_0_5#slide=id.g3a2f7671fab_0_5)
 
 [US3: Profile Creation](link here)
 
