@@ -4,6 +4,6 @@
 
 [US3: Profile Creation](https://docs.google.com/presentation/d/1Xhd-bPh0x5KSZWaIrGkUJNX7RR2g2u3AKoEHBS5A8HQ/edit?slide=id.g3a2f7671fab_0_10#slide=id.g3a2f7671fab_0_10)
 
-[US5: Golden Path](link here)
+[US5: Golden Path](https://docs.google.com/presentation/d/1Xhd-bPh0x5KSZWaIrGkUJNX7RR2g2u3AKoEHBS5A8HQ/edit?slide=id.g3a2f7671fab_0_20#slide=id.g3a2f7671fab_0_20)
 
 [US5: Item Listing View](https://docs.google.com/presentation/d/1Xhd-bPh0x5KSZWaIrGkUJNX7RR2g2u3AKoEHBS5A8HQ/edit?slide=id.g3a2f7671fab_0_15#slide=id.g3a2f7671fab_0_15)
