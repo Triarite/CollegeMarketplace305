@@ -396,19 +396,20 @@ class _ItemListingWidgetState extends State<ItemListingWidget> {
                   thickness: 1.0,
                   color: FlutterFlowTheme.of(context).primaryText,
                 ),
-                Flexible(
-                  child: Align(
-                    alignment: AlignmentDirectional(-1.0, -1.0),
-                    child: wrapWithModel(
-                      model: _model.sellerInfoModel,
-                      updateCallback: () => safeSetState(() {}),
-                      child: SellerInfoWidget(
-                        sellerDocumentReference:
-                            widget.productsDocument!.ownerRef!,
+                if (widget.productsDocument?.ownerRef != null ? true : false)
+                  Flexible(
+                    child: Align(
+                      alignment: AlignmentDirectional(-1.0, -1.0),
+                      child: wrapWithModel(
+                        model: _model.sellerInfoModel,
+                        updateCallback: () => safeSetState(() {}),
+                        child: SellerInfoWidget(
+                          sellerDocumentReference:
+                              widget.productsDocument!.ownerRef!,
+                        ),
                       ),
                     ),
                   ),
-                ),
               ],
             ),
           ),

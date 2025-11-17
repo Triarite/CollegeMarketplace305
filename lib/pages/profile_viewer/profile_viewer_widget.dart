@@ -38,9 +38,30 @@ class _ProfileViewerWidgetState extends State<ProfileViewerWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('PROFILE_VIEWER_ProfileViewer_ON_INIT_STA');
-      logFirebaseEvent('ProfileViewer_backend_call');
-      _model.userDocument =
-          await UsersRecord.getDocumentOnce(widget.userDocumentReference!);
+      if (widget.userDocumentReference != null) {
+        logFirebaseEvent('ProfileViewer_backend_call');
+        _model.userDocument =
+            await UsersRecord.getDocumentOnce(widget.userDocumentReference!);
+      } else {
+        logFirebaseEvent('ProfileViewer_alert_dialog');
+        await showDialog(
+          context: context,
+          builder: (alertDialogContext) {
+            return AlertDialog(
+              title: Text('Error'),
+              content: Text('User document is not set'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: Text('Ok'),
+                ),
+              ],
+            );
+          },
+        );
+        logFirebaseEvent('ProfileViewer_navigate_back');
+        context.safePop();
+      }
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));

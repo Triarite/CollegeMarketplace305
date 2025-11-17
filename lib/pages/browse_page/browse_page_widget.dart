@@ -81,7 +81,7 @@ class _BrowsePageWidgetState extends State<BrowsePageWidget> {
             backgroundColor: Color(0xFFECE7E8),
             appBar: AppBar(
               backgroundColor: Color(0xFF131B23),
-              automaticallyImplyLeading: true,
+              automaticallyImplyLeading: false,
               title: Text(
                 'Dorm Deals',
                 style: FlutterFlowTheme.of(context).bodyLarge.override(

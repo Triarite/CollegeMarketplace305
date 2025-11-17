@@ -8,6 +8,8 @@ class SellerInfoModel extends FlutterFlowModel<SellerInfoWidget> {
 
   double? averageRating = 0.0;
 
+  bool isLoading = true;
+
   ///  State fields for stateful widgets in this component.
 
   // Stores action output result for [Backend Call - Read Document] action in SellerInfo widget.
