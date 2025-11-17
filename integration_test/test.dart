@@ -31,6 +31,118 @@ void main() async {
     await appState.initializePersistedState();
   });
 
+  group('Account Creation Group', () {
+    testWidgets('Successful Account Creation', (WidgetTester tester) async {
+      _overrideOnError();
+
+      await tester.pumpWidget(MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (context) => FFAppState(),
+          ),
+        ],
+        child: MyApp(
+          entryPage: AccountCreationWidget(),
+        ),
+      ));
+      await GoogleFonts.pendingFonts();
+
+      await tester.pumpAndSettle(const Duration(milliseconds: 3000));
+      await tester.enterText(
+          find.byKey(const ValueKey('CreationEmail_8ndr')), 'cadije@gmail.com');
+      await tester.enterText(
+          find.byKey(const ValueKey('CreationPassword_yush')), 'Sharky_2010');
+      await tester.enterText(
+          find.byKey(const ValueKey('CreationVerifiedPassword_9e7l')),
+          'Sharky_2010');
+      await tester.tap(find.byKey(const ValueKey('CreationButton_snip')));
+      await tester.pumpAndSettle(const Duration(milliseconds: 3000));
+      expect(find.byKey(const ValueKey('Text_x4o7')), findsOneWidget);
+    });
+
+    testWidgets('Account Already Exists', (WidgetTester tester) async {
+      _overrideOnError();
+
+      await tester.pumpWidget(MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (context) => FFAppState(),
+          ),
+        ],
+        child: MyApp(
+          entryPage: AccountCreationWidget(),
+        ),
+      ));
+      await GoogleFonts.pendingFonts();
+
+      await tester.pumpAndSettle(const Duration(milliseconds: 3000));
+      await tester.enterText(find.byKey(const ValueKey('CreationEmail_8ndr')),
+          'cadije2222@gmail.com');
+      await tester.enterText(
+          find.byKey(const ValueKey('CreationPassword_yush')), 'Sharky_2010');
+      await tester.enterText(
+          find.byKey(const ValueKey('CreationVerifiedPassword_9e7l')),
+          'Sharky_2010');
+      await tester.tap(find.byKey(const ValueKey('CreationButton_snip')));
+      await tester.pumpAndSettle(const Duration(milliseconds: 3000));
+      expect(find.text('Error'), findsOneWidget);
+    });
+
+    testWidgets('Email address invalid ', (WidgetTester tester) async {
+      _overrideOnError();
+
+      await tester.pumpWidget(MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (context) => FFAppState(),
+          ),
+        ],
+        child: MyApp(
+          entryPage: AccountCreationWidget(),
+        ),
+      ));
+      await GoogleFonts.pendingFonts();
+
+      await tester.pumpAndSettle(const Duration(milliseconds: 3000));
+      await tester.enterText(
+          find.byKey(const ValueKey('CreationEmail_8ndr')), 'cadije');
+      await tester.enterText(
+          find.byKey(const ValueKey('CreationPassword_yush')), 'Sharky_2010');
+      await tester.enterText(
+          find.byKey(const ValueKey('CreationVerifiedPassword_9e7l')),
+          'Sharky_2010');
+      await tester.tap(find.byKey(const ValueKey('CreationButton_snip')));
+      expect(find.text('Error'), findsOneWidget);
+    });
+
+    testWidgets('Passwords do not match', (WidgetTester tester) async {
+      _overrideOnError();
+
+      await tester.pumpWidget(MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (context) => FFAppState(),
+          ),
+        ],
+        child: MyApp(
+          entryPage: AccountCreationWidget(),
+        ),
+      ));
+      await GoogleFonts.pendingFonts();
+
+      await tester.pumpAndSettle(const Duration(milliseconds: 3000));
+      await tester.enterText(find.byKey(const ValueKey('CreationEmail_8ndr')),
+          'cadije7@gmail.com');
+      await tester.enterText(
+          find.byKey(const ValueKey('CreationPassword_yush')), 'Sharky_2010');
+      await tester.enterText(
+          find.byKey(const ValueKey('CreationVerifiedPassword_9e7l')),
+          'Shark_2010');
+      await tester.pumpAndSettle(const Duration(milliseconds: 3000));
+      expect(find.text('Error'), findsOneWidget);
+    });
+  });
+
   testWidgets('US2User Login ', (WidgetTester tester) async {
     _overrideOnError();
 

@@ -75,6 +75,7 @@ class _ProfileCreationWidgetState extends State<ProfileCreationWidget> {
               children: [
                 if (getRemoteConfigBool('PC_Text'))
                   Text(
+                    key: ValueKey('Text_x4o7'),
                     'Add a Photo To Build Trust On Campus',
                     textAlign: TextAlign.center,
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
