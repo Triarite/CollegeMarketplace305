@@ -145,16 +145,20 @@ class _ProfileViewerWidgetState extends State<ProfileViewerWidget> {
                         color: FlutterFlowTheme.of(context).secondary,
                       ),
                     ),
-                    child: Container(
-                      width: 200.0,
-                      height: 200.0,
-                      clipBehavior: Clip.antiAlias,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                      ),
-                      child: Image.network(
-                        _model.userDocument!.photoUrl,
-                        fit: BoxFit.cover,
+                    child: Visibility(
+                      visible: _model.userDocument?.photoUrl != null &&
+                          _model.userDocument?.photoUrl != '',
+                      child: Container(
+                        width: 200.0,
+                        height: 200.0,
+                        clipBehavior: Clip.antiAlias,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                        ),
+                        child: Image.network(
+                          _model.userDocument!.photoUrl,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),
