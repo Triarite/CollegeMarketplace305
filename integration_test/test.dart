@@ -235,6 +235,79 @@ void main() async {
     });
   });
 
+  group('Item Listing', () {
+    setUp(() async {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: 'paolo.montelbano@uri.edu', password: 'theminer30');
+    });
+
+    testWidgets('View User Profile', (WidgetTester tester) async {
+      _overrideOnError();
+
+      await tester.pumpWidget(MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (context) => FFAppState(),
+          ),
+        ],
+        child: MyApp(
+          entryPage: BrowsePageWidget(),
+        ),
+      ));
+      await GoogleFonts.pendingFonts();
+
+      await tester.tap(find.text('Seller:'));
+    }, skip: true);
+
+    testWidgets('Change Item Price', (WidgetTester tester) async {
+      _overrideOnError();
+
+      await tester.pumpWidget(MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (context) => FFAppState(),
+          ),
+        ],
+        child: MyApp(
+          entryPage: BrowsePageWidget(),
+        ),
+      ));
+      await GoogleFonts.pendingFonts();
+    });
+
+    testWidgets('Delete Item', (WidgetTester tester) async {
+      _overrideOnError();
+
+      await tester.pumpWidget(MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (context) => FFAppState(),
+          ),
+        ],
+        child: MyApp(
+          entryPage: BrowsePageWidget(),
+        ),
+      ));
+      await GoogleFonts.pendingFonts();
+    });
+
+    testWidgets('Change Item Title', (WidgetTester tester) async {
+      _overrideOnError();
+
+      await tester.pumpWidget(MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (context) => FFAppState(),
+          ),
+        ],
+        child: MyApp(
+          entryPage: BrowsePageWidget(),
+        ),
+      ));
+      await GoogleFonts.pendingFonts();
+    });
+  });
+
   testWidgets('US2User Login ', (WidgetTester tester) async {
     _overrideOnError();
 
