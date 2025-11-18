@@ -157,7 +157,7 @@ class _SellerInfoWidgetState extends State<SellerInfoWidget>
                         _model.sellerDocument?.photoUrl != null &&
                                 _model.sellerDocument?.photoUrl != ''
                             ? _model.sellerDocument!.photoUrl
-                            : 'https://picsum.photos/seed/70/600',
+                            : 'https://cdna.artstation.com/p/assets/images/images/084/124/296/large/matthew-blank-profile-photo-1.jpg',
                         fit: BoxFit.cover,
                       ),
                     ),

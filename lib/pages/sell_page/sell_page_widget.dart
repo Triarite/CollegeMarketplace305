@@ -195,6 +195,7 @@ class _SellPageWidgetState extends State<SellPageWidget> {
                       borderRadius: BorderRadius.circular(12.0),
                     ),
                     child: Column(
+                      key: ValueKey('Column_ch9f'),
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Stack(
@@ -271,6 +272,7 @@ class _SellPageWidgetState extends State<SellPageWidget> {
                 Container(
                   width: 200.0,
                   child: TextFormField(
+                    key: ValueKey('titleField_xbw5'),
                     controller: _model.titleFieldTextController,
                     focusNode: _model.titleFieldFocusNode,
                     autofocus: false,
@@ -453,6 +455,7 @@ class _SellPageWidgetState extends State<SellPageWidget> {
                 Container(
                   width: 200.0,
                   child: TextFormField(
+                    key: ValueKey('priceField_6dco'),
                     controller: _model.priceFieldTextController,
                     focusNode: _model.priceFieldFocusNode,
                     autofocus: false,
@@ -555,6 +558,7 @@ class _SellPageWidgetState extends State<SellPageWidget> {
                 Container(
                   width: 200.0,
                   child: TextFormField(
+                    key: ValueKey('descriptionField_y2at'),
                     controller: _model.descriptionFieldTextController,
                     focusNode: _model.descriptionFieldFocusNode,
                     autofocus: false,
@@ -655,6 +659,7 @@ class _SellPageWidgetState extends State<SellPageWidget> {
                   ),
                 ),
                 FFButtonWidget(
+                  key: ValueKey('PublishButton_fwwn'),
                   onPressed: () async {
                     logFirebaseEvent('SELL_PAGE_PAGE_PublishButton_ON_TAP');
                     logFirebaseEvent('PublishButton_upload_file_to_firebase');

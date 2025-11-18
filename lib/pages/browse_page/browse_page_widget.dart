@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/product_card_widget.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
@@ -48,7 +49,8 @@ class _BrowsePageWidgetState extends State<BrowsePageWidget> {
   Widget build(BuildContext context) {
     return StreamBuilder<List<ProductsRecord>>(
       stream: queryProductsRecord(
-        queryBuilder: (productsRecord) => productsRecord.orderBy('created_at'),
+        queryBuilder: (productsRecord) =>
+            productsRecord.orderBy('created_at', descending: true),
         limit: 50,
       ),
       builder: (context, snapshot) {
@@ -83,7 +85,7 @@ class _BrowsePageWidgetState extends State<BrowsePageWidget> {
               backgroundColor: Color(0xFF131B23),
               automaticallyImplyLeading: false,
               title: Text(
-                'Dorm Deals',
+                'DormDeals',
                 style: FlutterFlowTheme.of(context).bodyLarge.override(
                       font: GoogleFonts.inter(
                         fontWeight: FontWeight.bold,
@@ -512,7 +514,14 @@ class _BrowsePageWidgetState extends State<BrowsePageWidget> {
                                       logFirebaseEvent('Icon_navigate_to');
 
                                       context.pushNamed(
-                                        TempLoggoutWidget.routeName,
+                                        ProfileViewerWidget.routeName,
+                                        queryParameters: {
+                                          'userDocumentReference':
+                                              serializeParam(
+                                            currentUserReference,
+                                            ParamType.DocumentReference,
+                                          ),
+                                        }.withoutNulls,
                                         extra: <String, dynamic>{
                                           kTransitionInfoKey: TransitionInfo(
                                             hasTransition: true,

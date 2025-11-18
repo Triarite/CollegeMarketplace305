@@ -166,6 +166,32 @@ void main() async {
     await tester.pumpAndSettle(const Duration(milliseconds: 5000));
     expect(find.byKey(const ValueKey('ChoiceChips_4dgn')), findsOneWidget);
   });
+
+  testWidgets('US5-GoldenPath-PostListing', (WidgetTester tester) async {
+    _overrideOnError();
+
+    await tester.pumpWidget(MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => FFAppState(),
+        ),
+      ],
+      child: const MyApp(),
+    ));
+    await GoogleFonts.pendingFonts();
+
+    await tester.tap(find.byKey(const ValueKey('Column_ch9f')));
+    await tester.pumpAndSettle(const Duration(milliseconds: 3000));
+    await tester.enterText(
+        find.byKey(const ValueKey('titleField_xbw5')), 'CSC305 Textbook');
+    await tester.enterText(
+        find.byKey(const ValueKey('priceField_6dco')), '15.00');
+    await tester.enterText(find.byKey(const ValueKey('descriptionField_y2at')),
+        'Lightly used textbook for CSC305.');
+    await tester.tap(find.byKey(const ValueKey('PublishButton_fwwn')));
+    await tester.pumpAndSettle(const Duration(milliseconds: 3000));
+    expect(find.text('CSC305 Textbook'), findsNothing);
+  });
 }
 
 // There are certain types of errors that can happen during tests but
