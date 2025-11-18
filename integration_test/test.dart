@@ -47,7 +47,7 @@ void main() async {
       ));
       await GoogleFonts.pendingFonts();
 
-      await tester.pumpAndSettle(const Duration(milliseconds: 3000));
+      await tester.pumpAndSettle(const Duration(milliseconds: 5000));
       await tester.enterText(
           find.byKey(const ValueKey('CreationEmail_8ndr')), 'cadije@gmail.com');
       await tester.enterText(
@@ -56,7 +56,7 @@ void main() async {
           find.byKey(const ValueKey('CreationVerifiedPassword_9e7l')),
           'Sharky_2010');
       await tester.tap(find.byKey(const ValueKey('CreationButton_snip')));
-      await tester.pumpAndSettle(const Duration(milliseconds: 3000));
+      await tester.pumpAndSettle(const Duration(milliseconds: 5000));
       expect(find.byKey(const ValueKey('Text_x4o7')), findsOneWidget);
     });
 
@@ -140,6 +140,27 @@ void main() async {
           'Shark_2010');
       await tester.pumpAndSettle(const Duration(milliseconds: 3000));
       expect(find.text('Error'), findsOneWidget);
+    });
+  });
+
+  group('US3-Profile creation', () {
+    testWidgets('leave everything empty', (WidgetTester tester) async {
+      _overrideOnError();
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: 'cadije7@gmail.com', password: 'Sharky_2010');
+      await tester.pumpWidget(MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (context) => FFAppState(),
+          ),
+        ],
+        child: const MyApp(),
+      ));
+      await GoogleFonts.pendingFonts();
+
+      await tester.tap(find.byKey(const ValueKey('CreateProfileButton_b5y8')));
+      await tester.pumpAndSettle();
+      expect(find.text('DormDeals'), findsWidgets);
     });
   });
 

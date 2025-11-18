@@ -96,11 +96,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) {
             : LoginPageWidget(),
       ),
       FFRoute(
-        name: ForgotPWPageWidget.routeName,
-        path: ForgotPWPageWidget.routePath,
-        builder: (context, params) => ForgotPWPageWidget(),
-      ),
-      FFRoute(
         name: AccountCreationWidget.routeName,
         path: AccountCreationWidget.routePath,
         builder: (context, params) => AccountCreationWidget(),
@@ -126,19 +121,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) {
         builder: (context, params) => TempLoggoutWidget(),
       ),
       FFRoute(
-        name: ItemListingWidget.routeName,
-        path: ItemListingWidget.routePath,
-        asyncParams: {
-          'productsDocument': getDoc(['products'], ProductsRecord.fromSnapshot),
-        },
-        builder: (context, params) => ItemListingWidget(
-          productsDocument: params.getParam(
-            'productsDocument',
-            ParamType.Document,
-          ),
-        ),
-      ),
-      FFRoute(
         name: LoginPageWidget.routeName,
         path: LoginPageWidget.routePath,
         builder: (context, params) => LoginPageWidget(),
@@ -152,6 +134,24 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) {
             ParamType.DocumentReference,
             isList: false,
             collectionNamePath: ['users'],
+          ),
+        ),
+      ),
+      FFRoute(
+        name: ForgotPWPageWidget.routeName,
+        path: ForgotPWPageWidget.routePath,
+        builder: (context, params) => ForgotPWPageWidget(),
+      ),
+      FFRoute(
+        name: ItemListingWidget.routeName,
+        path: ItemListingWidget.routePath,
+        asyncParams: {
+          'productsDocument': getDoc(['products'], ProductsRecord.fromSnapshot),
+        },
+        builder: (context, params) => ItemListingWidget(
+          productsDocument: params.getParam(
+            'productsDocument',
+            ParamType.Document,
           ),
         ),
       ),

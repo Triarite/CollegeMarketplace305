@@ -610,6 +610,7 @@ class _ProfileCreationWidgetState extends State<ProfileCreationWidget> {
                   ),
                 ),
                 FFButtonWidget(
+                  key: ValueKey('CreateProfileButton_b5y8'),
                   onPressed: () async {
                     logFirebaseEvent(
                         'PROFILE_CREATION_CreateProfileButton_ON_');

@@ -1,4 +1,6 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/components/edit_listing_widget.dart';
 import '/components/seller_info_widget.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -238,6 +240,72 @@ class _ItemListingWidgetState extends State<ItemListingWidget> {
                           ),
                         ),
                       ),
+                      if (widget.productsDocument?.ownerUid == currentUserUid)
+                        Align(
+                          alignment: AlignmentDirectional(-1.0, -1.0),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                2.0, 2.0, 0.0, 0.0),
+                            child: Container(
+                              constraints: BoxConstraints(
+                                minHeight: 50.0,
+                                maxWidth: 100.0,
+                              ),
+                              decoration: BoxDecoration(
+                                color: Color(0x70FFFFFF),
+                                borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(0.0),
+                                  bottomRight: Radius.circular(10.0),
+                                  topLeft: Radius.circular(15.0),
+                                  topRight: Radius.circular(0.0),
+                                ),
+                              ),
+                              child: Builder(
+                                builder: (context) => FlutterFlowIconButton(
+                                  borderRadius: 8.0,
+                                  buttonSize: 48.0,
+                                  icon: Icon(
+                                    Icons.edit_sharp,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    size: 20.0,
+                                  ),
+                                  onPressed: () async {
+                                    logFirebaseEvent(
+                                        'ITEM_LISTING_PAGE_edit_sharp_ICN_ON_TAP');
+                                    logFirebaseEvent('IconButton_alert_dialog');
+                                    await showDialog(
+                                      context: context,
+                                      builder: (dialogContext) {
+                                        return Dialog(
+                                          elevation: 0,
+                                          insetPadding: EdgeInsets.zero,
+                                          backgroundColor: Colors.transparent,
+                                          alignment: AlignmentDirectional(
+                                                  0.0, 0.0)
+                                              .resolve(
+                                                  Directionality.of(context)),
+                                          child: GestureDetector(
+                                            onTap: () {
+                                              FocusScope.of(dialogContext)
+                                                  .unfocus();
+                                              FocusManager.instance.primaryFocus
+                                                  ?.unfocus();
+                                            },
+                                            child: EditListingWidget(
+                                              productDocumentReference: widget
+                                                  .productsDocument!.reference,
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  },
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
                     ],
                   ),
                 ),
