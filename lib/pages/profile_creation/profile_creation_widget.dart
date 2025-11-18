@@ -198,6 +198,7 @@ class _ProfileCreationWidgetState extends State<ProfileCreationWidget> {
                   child: Container(
                     width: double.infinity,
                     child: TextFormField(
+                      key: ValueKey('Name_nzlv'),
                       controller: _model.nameTextController,
                       focusNode: _model.nameFocusNode,
                       autofocus: false,
@@ -305,6 +306,7 @@ class _ProfileCreationWidgetState extends State<ProfileCreationWidget> {
                       child: Container(
                         width: double.infinity,
                         child: TextFormField(
+                          key: ValueKey('Major_871k'),
                           controller: _model.majorTextController,
                           focusNode: _model.majorFocusNode,
                           autofocus: false,
@@ -408,6 +410,7 @@ class _ProfileCreationWidgetState extends State<ProfileCreationWidget> {
                       ),
                     ),
                     FlutterFlowDropDown<String>(
+                      key: ValueKey('Year_zb7l'),
                       controller: _model.yearValueController ??=
                           FormFieldController<String>(null),
                       options: [
@@ -462,6 +465,7 @@ class _ProfileCreationWidgetState extends State<ProfileCreationWidget> {
                 Container(
                   width: double.infinity,
                   child: TextFormField(
+                    key: ValueKey('Bio_6153'),
                     controller: _model.bioTextController,
                     focusNode: _model.bioFocusNode,
                     autofocus: false,

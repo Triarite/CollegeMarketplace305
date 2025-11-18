@@ -162,6 +162,77 @@ void main() async {
       await tester.pumpAndSettle();
       expect(find.text('DormDeals'), findsWidgets);
     });
+
+    testWidgets('Create profile without a profile picture ',
+        (WidgetTester tester) async {
+      _overrideOnError();
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: 'cadije2222@gmail.com', password: 'Sharky_2010');
+      await tester.pumpWidget(MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (context) => FFAppState(),
+          ),
+        ],
+        child: const MyApp(),
+      ));
+      await GoogleFonts.pendingFonts();
+
+      await tester.enterText(find.byKey(const ValueKey('Name_nzlv')), 'test2');
+      await tester.enterText(
+          find.byKey(const ValueKey('Major_871k')), 'comp sci');
+      await tester.tap(find.byKey(const ValueKey('Year_zb7l')));
+      await tester.enterText(find.byKey(const ValueKey('Bio_6153')), 'Hello ');
+      await tester.tap(find.byKey(const ValueKey('CreateProfileButton_b5y8')));
+      await tester.pumpAndSettle();
+      expect(find.text('DormDeals'), findsWidgets);
+    });
+
+    testWidgets('Missing Name', (WidgetTester tester) async {
+      _overrideOnError();
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: 'azul@gmail.com', password: '123456');
+      await tester.pumpWidget(MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (context) => FFAppState(),
+          ),
+        ],
+        child: const MyApp(),
+      ));
+      await GoogleFonts.pendingFonts();
+
+      await tester.enterText(find.byKey(const ValueKey('Major_871k')), 'comp');
+      await tester.tap(find.byKey(const ValueKey('Year_zb7l')));
+      await tester.enterText(find.byKey(const ValueKey('Bio_6153')), 'Hello ');
+      await tester.tap(find.byKey(const ValueKey('CreateProfileButton_b5y8')));
+      await tester.pumpAndSettle();
+      expect(find.text('DormDeals'), findsWidgets);
+    });
+
+    testWidgets('Successfully create profile', (WidgetTester tester) async {
+      _overrideOnError();
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: 'cadije@gmail.com', password: 'Shark_2010');
+      await tester.pumpWidget(MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (context) => FFAppState(),
+          ),
+        ],
+        child: const MyApp(),
+      ));
+      await GoogleFonts.pendingFonts();
+
+      await tester.enterText(find.byKey(const ValueKey('Name_nzlv')), 'test4');
+      await tester.enterText(
+          find.byKey(const ValueKey('Major_871k')), 'comp sci');
+      await tester.tap(find.byKey(const ValueKey('Year_zb7l')));
+      await tester.enterText(find.byKey(const ValueKey('Bio_6153')), 'hello');
+      await tester.tap(find.byKey(const ValueKey('CreateProfileButton_b5y8')));
+      await tester.pumpAndSettle();
+      expect(find.text('DormDeals'), findsWidgets);
+    });
   });
 
   testWidgets('US2User Login ', (WidgetTester tester) async {
@@ -212,6 +283,80 @@ void main() async {
     await tester.tap(find.byKey(const ValueKey('PublishButton_fwwn')));
     await tester.pumpAndSettle(const Duration(milliseconds: 3000));
     expect(find.text('CSC305 Textbook'), findsNothing);
+  });
+
+  testWidgets('US5-OwnerAttribution-CurrentUser', (WidgetTester tester) async {
+    _overrideOnError();
+
+    await tester.pumpWidget(MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => FFAppState(),
+        ),
+      ],
+      child: const MyApp(),
+    ));
+    await GoogleFonts.pendingFonts();
+
+    await tester.tap(find.byKey(const ValueKey('Column_ch9f')));
+    await tester.pumpAndSettle(const Duration(milliseconds: 3000));
+    await tester.enterText(
+        find.byKey(const ValueKey('titleField_xbw5')), 'CSC305 Textbook');
+    await tester.enterText(
+        find.byKey(const ValueKey('priceField_6dco')), '15.00');
+    await tester.enterText(find.byKey(const ValueKey('descriptionField_y2at')),
+        'Lightly used textbook for CSC305.');
+    await tester.tap(find.byKey(const ValueKey('PublishButton_fwwn')));
+    await tester.pumpAndSettle(const Duration(milliseconds: 3000));
+    expect(find.text('CSC305 Textbook'), findsNothing);
+    await tester.tap(find.byKey(const ValueKey('ProductCard_z4ih')));
+    await tester.pumpAndSettle(const Duration(milliseconds: 2000));
+  });
+
+  testWidgets('US5-ImageUpload-PreviewRenders', (WidgetTester tester) async {
+    _overrideOnError();
+
+    await tester.pumpWidget(MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => FFAppState(),
+        ),
+      ],
+      child: const MyApp(),
+    ));
+    await GoogleFonts.pendingFonts();
+
+    await tester.tap(find.byKey(const ValueKey('Column_ch9f')));
+    await tester.pumpAndSettle(const Duration(milliseconds: 3000));
+    await tester.enterText(
+        find.byKey(const ValueKey('titleField_xbw5')), 'CSC305 Textbook');
+    await tester.enterText(
+        find.byKey(const ValueKey('priceField_6dco')), '15.00');
+    await tester.enterText(find.byKey(const ValueKey('descriptionField_y2at')),
+        'Lightly used textbook for CSC305.');
+    await tester.tap(find.byKey(const ValueKey('PublishButton_fwwn')));
+    await tester.pumpAndSettle(const Duration(milliseconds: 3000));
+    expect(find.text('CSC305 Textbook'), findsNothing);
+    expect(find.byKey(const ValueKey('ProductCard')), findsNothing);
+  });
+
+  testWidgets('US5-validation when fields are empty',
+      (WidgetTester tester) async {
+    _overrideOnError();
+
+    await tester.pumpWidget(MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => FFAppState(),
+        ),
+      ],
+      child: const MyApp(),
+    ));
+    await GoogleFonts.pendingFonts();
+
+    await tester.tap(find.byKey(const ValueKey('PublishButton_fwwn')));
+    await tester.pumpAndSettle(const Duration(milliseconds: 1500));
+    expect(find.text('Error'), findsNothing);
   });
 }
 

@@ -354,10 +354,13 @@ class _BrowsePageWidgetState extends State<BrowsePageWidget> {
                                 itemCount: children.length,
                                 itemBuilder: (context, childrenIndex) {
                                   final childrenItem = children[childrenIndex];
-                                  return ProductCardWidget(
-                                    key: Key(
-                                        'Key91v_${childrenIndex}_of_${children.length}'),
-                                    productDocument: childrenItem,
+                                  return Container(
+                                    key: ValueKey('ProductCard_z4ih'),
+                                    child: ProductCardWidget(
+                                      key: Key(
+                                          'Key91v_${childrenIndex}_of_${children.length}'),
+                                      productDocument: childrenItem,
+                                    ),
                                   );
                                 },
                               );
