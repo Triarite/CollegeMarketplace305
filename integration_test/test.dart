@@ -4,17 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:integration_test/integration_test.dart';
-import 'package:college_marketplace/flutter_flow/flutter_flow_drop_down.dart';
-import 'package:college_marketplace/flutter_flow/flutter_flow_icon_button.dart';
-import 'package:college_marketplace/flutter_flow/flutter_flow_widgets.dart';
+import 'package:dorm_deals/flutter_flow/flutter_flow_drop_down.dart';
+import 'package:dorm_deals/flutter_flow/flutter_flow_icon_button.dart';
+import 'package:dorm_deals/flutter_flow/flutter_flow_widgets.dart';
 import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
-import 'package:college_marketplace/index.dart';
-import 'package:college_marketplace/main.dart';
-import 'package:college_marketplace/flutter_flow/flutter_flow_util.dart';
+import 'package:dorm_deals/index.dart';
+import 'package:dorm_deals/main.dart';
+import 'package:dorm_deals/flutter_flow/flutter_flow_util.dart';
 
 import 'package:provider/provider.dart';
-import 'package:college_marketplace/backend/firebase/firebase_config.dart';
-import 'package:college_marketplace/auth/firebase_auth/auth_util.dart';
+import 'package:dorm_deals/backend/firebase/firebase_config.dart';
+import 'package:dorm_deals/auth/firebase_auth/auth_util.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 void main() async {
@@ -256,8 +256,76 @@ void main() async {
       ));
       await GoogleFonts.pendingFonts();
 
+      await tester.tap(find.text('\$'));
+      await tester.pumpAndSettle(
+        const Duration(milliseconds: 2000),
+        EnginePhase.sendSemanticsUpdate,
+        const Duration(milliseconds: 10000),
+      );
       await tester.tap(find.text('Seller:'));
+      await tester.pumpAndSettle(
+        const Duration(milliseconds: 2000),
+        EnginePhase.sendSemanticsUpdate,
+        const Duration(milliseconds: 10000),
+      );
+      expect(find.text('Bio'), findsOneWidget);
     }, skip: true);
+
+    testWidgets('Change Item Title', (WidgetTester tester) async {
+      _overrideOnError();
+
+      await tester.pumpWidget(MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (context) => FFAppState(),
+          ),
+        ],
+        child: MyApp(
+          entryPage: BrowsePageWidget(),
+        ),
+      ));
+      await GoogleFonts.pendingFonts();
+
+      await tester.tap(find.byKey(const ValueKey('ProductCard_z4ih')));
+      await tester.pumpAndSettle(
+        const Duration(milliseconds: 2000),
+        EnginePhase.sendSemanticsUpdate,
+        const Duration(milliseconds: 10000),
+      );
+      await tester.tap(find.byKey(const ValueKey('IconButton_ik5k')));
+      await tester.pumpAndSettle(
+        const Duration(milliseconds: 2000),
+        EnginePhase.sendSemanticsUpdate,
+        const Duration(milliseconds: 10000),
+      );
+      await tester.tap(find.byKey(const ValueKey('Dropdown Details')));
+      await tester.pumpAndSettle(
+        const Duration(milliseconds: 2000),
+        EnginePhase.sendSemanticsUpdate,
+        const Duration(milliseconds: 10000),
+      );
+      await tester.tap(find.text('Product Title'));
+      await tester.pumpAndSettle(
+        const Duration(milliseconds: 2000),
+        EnginePhase.sendSemanticsUpdate,
+        const Duration(milliseconds: 10000),
+      );
+      await tester.enterText(
+          find.text('Detail Input'), 'New Title for Testing');
+      FocusManager.instance.primaryFocus?.unfocus();
+      await tester.pumpAndSettle(
+        const Duration(milliseconds: 2000),
+        EnginePhase.sendSemanticsUpdate,
+        const Duration(milliseconds: 10000),
+      );
+      await tester.tap(find.byKey(const ValueKey('Change Detail')));
+      await tester.pumpAndSettle(
+        const Duration(milliseconds: 2000),
+        EnginePhase.sendSemanticsUpdate,
+        const Duration(milliseconds: 10000),
+      );
+      expect(find.byKey(const ValueKey('Title_zf08')), findsOneWidget);
+    });
 
     testWidgets('Change Item Price', (WidgetTester tester) async {
       _overrideOnError();
@@ -273,6 +341,45 @@ void main() async {
         ),
       ));
       await GoogleFonts.pendingFonts();
+
+      await tester.tap(find.byKey(const ValueKey('ProductCard_z4ih')));
+      await tester.pumpAndSettle(
+        const Duration(milliseconds: 2000),
+        EnginePhase.sendSemanticsUpdate,
+        const Duration(milliseconds: 10000),
+      );
+      await tester.tap(find.byKey(const ValueKey('IconButton_ik5k')));
+      await tester.pumpAndSettle(
+        const Duration(milliseconds: 2000),
+        EnginePhase.sendSemanticsUpdate,
+        const Duration(milliseconds: 10000),
+      );
+      await tester.tap(find.byKey(const ValueKey('Dropdown Details')));
+      await tester.pumpAndSettle(
+        const Duration(milliseconds: 2000),
+        EnginePhase.sendSemanticsUpdate,
+        const Duration(milliseconds: 10000),
+      );
+      await tester.tap(find.text('Product Price'));
+      await tester.pumpAndSettle(
+        const Duration(milliseconds: 2000),
+        EnginePhase.sendSemanticsUpdate,
+        const Duration(milliseconds: 10000),
+      );
+      await tester.enterText(find.text('Detail Input'), '50');
+      FocusManager.instance.primaryFocus?.unfocus();
+      await tester.pumpAndSettle(
+        const Duration(milliseconds: 2000),
+        EnginePhase.sendSemanticsUpdate,
+        const Duration(milliseconds: 10000),
+      );
+      await tester.tap(find.byKey(const ValueKey('Change Detail')));
+      await tester.pumpAndSettle(
+        const Duration(milliseconds: 2000),
+        EnginePhase.sendSemanticsUpdate,
+        const Duration(milliseconds: 10000),
+      );
+      expect(find.byKey(const ValueKey('Title_zf08')), findsOneWidget);
     });
 
     testWidgets('Delete Item', (WidgetTester tester) async {
@@ -289,22 +396,32 @@ void main() async {
         ),
       ));
       await GoogleFonts.pendingFonts();
-    });
 
-    testWidgets('Change Item Title', (WidgetTester tester) async {
-      _overrideOnError();
-
-      await tester.pumpWidget(MultiProvider(
-        providers: [
-          ChangeNotifierProvider(
-            create: (context) => FFAppState(),
-          ),
-        ],
-        child: MyApp(
-          entryPage: BrowsePageWidget(),
-        ),
-      ));
-      await GoogleFonts.pendingFonts();
+      await tester.tap(find.byKey(const ValueKey('ProductCard_z4ih')));
+      await tester.pumpAndSettle(
+        const Duration(milliseconds: 2000),
+        EnginePhase.sendSemanticsUpdate,
+        const Duration(milliseconds: 10000),
+      );
+      await tester.tap(find.byKey(const ValueKey('IconButton_ik5k')));
+      await tester.pumpAndSettle(
+        const Duration(milliseconds: 2000),
+        EnginePhase.sendSemanticsUpdate,
+        const Duration(milliseconds: 10000),
+      );
+      await tester.tap(find.byKey(const ValueKey('Delete Listing')));
+      await tester.pumpAndSettle(
+        const Duration(milliseconds: 2000),
+        EnginePhase.sendSemanticsUpdate,
+        const Duration(milliseconds: 10000),
+      );
+      await tester.tap(find.text('Delete'));
+      await tester.pumpAndSettle(
+        const Duration(milliseconds: 2000),
+        EnginePhase.sendSemanticsUpdate,
+        const Duration(milliseconds: 10000),
+      );
+      expect(find.byKey(const ValueKey('Title_zf08')), findsOneWidget);
     });
   });
 

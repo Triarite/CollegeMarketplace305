@@ -1,4 +1,4 @@
-# College Marketplace
+# DormDeals
 
 A new Flutter project.
 

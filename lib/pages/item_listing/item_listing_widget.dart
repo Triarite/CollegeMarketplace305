@@ -262,6 +262,7 @@ class _ItemListingWidgetState extends State<ItemListingWidget> {
                               ),
                               child: Builder(
                                 builder: (context) => FlutterFlowIconButton(
+                                  key: ValueKey('IconButton_ik5k'),
                                   borderRadius: 8.0,
                                   buttonSize: 48.0,
                                   icon: Icon(

@@ -85,6 +85,7 @@ class _BrowsePageWidgetState extends State<BrowsePageWidget> {
               backgroundColor: Color(0xFF131B23),
               automaticallyImplyLeading: false,
               title: Text(
+                key: ValueKey('Title_zf08'),
                 'DormDeals',
                 style: FlutterFlowTheme.of(context).bodyLarge.override(
                       font: GoogleFonts.inter(

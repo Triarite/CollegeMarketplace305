@@ -1,4 +1,4 @@
-package com.mycompany.collegemarketplace
+package com.uricsc305.dormdeals
 
 import io.flutter.embedding.android.FlutterActivity
 

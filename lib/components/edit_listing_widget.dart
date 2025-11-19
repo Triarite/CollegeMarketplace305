@@ -146,6 +146,7 @@ class _EditListingWidgetState extends State<EditListingWidget> {
                   ),
                 ),
                 FFButtonWidget(
+                  key: ValueKey('Delete Listing'),
                   onPressed: () async {
                     logFirebaseEvent('EDIT_LISTING_COMP_DeleteListing_ON_TAP');
                     logFirebaseEvent('DeleteListing_alert_dialog');
@@ -251,8 +252,10 @@ class _EditListingWidgetState extends State<EditListingWidget> {
                         Align(
                           alignment: AlignmentDirectional(-1.0, 0.0),
                           child: FlutterFlowDropDown<String>(
+                            key: ValueKey('Dropdown Details'),
                             controller: _model.dropDownValueController ??=
                                 FormFieldController<String>(null),
+                            optionsHasValueKeys: true,
                             options: [
                               'Product Title',
                               'Product Description',
@@ -309,6 +312,7 @@ class _EditListingWidgetState extends State<EditListingWidget> {
                               child: Container(
                                 width: 200.0,
                                 child: TextFormField(
+                                  key: ValueKey('Detail Input'),
                                   controller: _model.textController,
                                   focusNode: _model.textFieldFocusNode,
                                   autofocus: false,
@@ -427,6 +431,7 @@ class _EditListingWidgetState extends State<EditListingWidget> {
                               ),
                             ),
                             FlutterFlowIconButton(
+                              key: ValueKey('Change Detail'),
                               borderRadius: 8.0,
                               buttonSize: 40.0,
                               fillColor: FlutterFlowTheme.of(context).primary,

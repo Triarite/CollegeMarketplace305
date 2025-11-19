@@ -1,4 +1,4 @@
-package com.mycompany.collegemarketplace;
+package com.uricsc305.dormdeals;
 
 import androidx.test.rule.ActivityTestRule;
 import dev.flutter.plugins.integration_test.FlutterTestRunner;

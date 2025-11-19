@@ -5,8 +5,8 @@ import '../base_auth_user_provider.dart';
 
 export '../base_auth_user_provider.dart';
 
-class CollegeMarketplaceFirebaseUser extends BaseAuthUser {
-  CollegeMarketplaceFirebaseUser(this.user);
+class DormDealsFirebaseUser extends BaseAuthUser {
+  DormDealsFirebaseUser(this.user);
   User? user;
   bool get loggedIn => user != null;
 
@@ -59,18 +59,17 @@ class CollegeMarketplaceFirebaseUser extends BaseAuthUser {
   static BaseAuthUser fromUserCredential(UserCredential userCredential) =>
       fromFirebaseUser(userCredential.user);
   static BaseAuthUser fromFirebaseUser(User? user) =>
-      CollegeMarketplaceFirebaseUser(user);
+      DormDealsFirebaseUser(user);
 }
 
-Stream<BaseAuthUser> collegeMarketplaceFirebaseUserStream() =>
-    FirebaseAuth.instance
+Stream<BaseAuthUser> dormDealsFirebaseUserStream() => FirebaseAuth.instance
         .authStateChanges()
         .debounce((user) => user == null && !loggedIn
             ? TimerStream(true, const Duration(seconds: 1))
             : Stream.value(user))
         .map<BaseAuthUser>(
       (user) {
-        currentUser = CollegeMarketplaceFirebaseUser(user);
+        currentUser = DormDealsFirebaseUser(user);
         return currentUser!;
       },
     );
